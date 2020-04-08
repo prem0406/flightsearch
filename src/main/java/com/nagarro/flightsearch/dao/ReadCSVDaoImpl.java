@@ -1,6 +1,7 @@
 package com.nagarro.flightsearch.dao;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.nio.file.*;
 import java.util.*;
@@ -27,6 +28,11 @@ public  class ReadCSVDaoImpl implements ReadCSVDao{
 	@Override
 	public void readCSV() {
 		String pathStr = "C:\\Users\\premkumar\\Downloads\\Application Development";
+		
+//		String pathStr = System.getProperty("user.dir") + "\\src\\main\\resources";
+		
+//		File file = new File("src\\main\\resources");
+		String pathStr = file.getAbsolutePath();
 
 		List<String> list = null;
 		
