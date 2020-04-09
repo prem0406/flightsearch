@@ -7,7 +7,6 @@ public class StringToTime {
 	public static LocalTime getTime(String strTime) throws Exception {
 		
 		LocalTime lt = LocalTime.parse(strTime, DateTimeFormatter.ofPattern("HHmm"));
-//		System.out.println(lt.format(DateTimeFormatter.ofPattern("HHmm")));
 		return lt;
 		
 	}

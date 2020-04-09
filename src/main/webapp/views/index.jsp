@@ -4,12 +4,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
+
 <style type="text/css">
 body {
 	font-family: sans-serif;
+}
+
+.container{
+    display: block;
+    margin: auto;
+    width: 60%;
+    min-width: 750px;
+    border: 1px solid black;
+    
+}
+
+.searchBox{
+	padding: 20px;
+
+}
+
+table {
+	table-layout: fixed;
+    width: 100%;
+}
+
+.logoutText {
+    border: 1px solid black;
+    text-decoration: none;
+    padding: 3px;
+    float: right;
+    background-color: #cfcfcf;
+}
+
+.logoutText:hover {
+    opacity: 0.7;
 }
 
 table, td, tr, th {
@@ -19,39 +48,32 @@ table, td, tr, th {
 	letter-spacing: 1px;
 }
 
-table {
-	width: 100%;
+td {
+    word-wrap: break-word;
 }
+
 
 button {
 	margin: 5px;
 }
 </style>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-<script>
-	$(function() {
-		$("#datepicker").datepicker();
-	});
-</script>
 </head>
 <body>
-	<div style="border: 1px solid #333; width: 70%">
+	<div class="container">
 		<div
 			style="padding: 10px; font-size: 18px; letter-spacing: 1px; border-bottom: 1px solid #333">
 			<b>Flight Search Utility</b>
 		</div>
 		<br>
-		<div style="padding: 10px">
-
+		<div class="searchBox">
+            <a class="logoutText" href="javascript:document.getElementById('logout').submit()">Logout</a>
 			<form action="getFlight">
 
 				From <input type="text" name="deploc" required> To <input
 					type="text" name="arrloc" required> 
 					
-					<p>Date: <input type="text" name="fdate" id="datepicker"></p>
+					<p>Date: <input type="date" name="fdate" value="2013-01-01"></p>
 					
 				<label for="fclass">Class: </label> 
 				<select name="fclass" id="fclass">
@@ -68,7 +90,7 @@ button {
 
 			<br> <br> <b>Search Results</b>
 		</div>
-		<%-- OutPut: ${flight} --%>
+		
 		<table>
 			<tr>
 				<th>Flight No</th>
@@ -104,11 +126,11 @@ button {
 	</div>
 	
 	<c:url value="/logout" var="logoutUrl" />
-<form id="logout" action="${logoutUrl}" method="post" >
-  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-</form>
-<c:if test="${pageContext.request.userPrincipal.name != null}">
-	<a href="javascript:document.getElementById('logout').submit()">Logout</a>
+    <form id="logout" action="${logoutUrl}" method="post" >
+         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    </form>
+    <c:if test="${pageContext.request.userPrincipal.name != null}">
+	
 </c:if>
 </body>
 </html>

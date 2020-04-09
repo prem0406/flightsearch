@@ -1,9 +1,6 @@
 package com.nagarro.flightsearch.dao;
 
 import java.text.ParseException;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -41,17 +38,14 @@ public class FlightDaoImpl implements FlightDao{
 		q.setParameter("arrloc", arrloc);
 		q.setParameter("cl", "%"+fclass.subSequence(0, 1) + "%");
 		System.out.println("Class .." + fclass.subSequence(0, 1));
-		LocalDate ld = null;
+		Date date = null;
+		
 		try {
-			ld = StringToDate.getDateShlash(fdate);
-		} catch (DateTimeParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			date = StringToDate.getDate(fdate);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Cannot Parse Fdate: "+e);
 		}
-		Date date = Date.from(ld.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		
 		q.setDate("fdate", date);
 		List<Flight> flights = q.getResultList();
 		return flights;
