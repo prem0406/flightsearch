@@ -67,7 +67,7 @@ button {
 		</div>
 		<br>
 		<div class="searchBox">
-            <a class="logoutText" href="javascript:document.getElementById('logout').submit()">Logout</a>
+            <a class="logoutText" href="/flightsearch/login">Logout</a>
 			<form action="getFlight">
 
 				From <input type="text" name="deploc" required> To <input

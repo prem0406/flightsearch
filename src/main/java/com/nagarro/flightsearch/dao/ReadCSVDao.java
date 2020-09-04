@@ -4,5 +4,5 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface ReadCSVDao {
-	public void readCSV();
+	public void readCSV(String pathStr);
 }

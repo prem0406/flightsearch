@@ -39,7 +39,7 @@ input[type=text], input[type=password] {
 
 		<div>
 
-			<form action="SignIn" method="post">
+			<form action="adminSignIn" method="post">
 				<br>
 
 				<table>
@@ -62,8 +62,6 @@ input[type=text], input[type=password] {
 
 					<tr>
 
-						
-						<td align="left"><a href="register">Register</a></td>
 						<td align="right"><input type="submit" value="Sign In"
 							align="right"></td>
 				</table>

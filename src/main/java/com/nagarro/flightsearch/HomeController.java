@@ -20,18 +20,21 @@ public class HomeController {
 	@Autowired
 	FlightSearchService flightSearchService;
 
-	@Autowired
-	ReadCSVService readCSVService;
-
-
 	
-	  @RequestMapping("/") public ModelAndView home() { ModelAndView mv = new
-		  ModelAndView(); 
-		  mv.setViewName("index"); 
-		  readCSVService.readCSV(); 
-		  return mv;
-	  
-	  }
+
+	@RequestMapping("login")
+	public String loginPage() {
+		return "loginPage";
+	}
+	
+	@RequestMapping("/") 
+	public ModelAndView home() 
+	{ 
+		ModelAndView mv = new ModelAndView(); 
+	  mv.setViewName("home"); 
+	  return mv;
+  
+  }
 	 
 
 	@RequestMapping("getFlight")

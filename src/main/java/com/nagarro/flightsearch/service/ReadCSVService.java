@@ -10,7 +10,7 @@ public class ReadCSVService {
 	@Autowired
 	ReadCSVDao readCSVDaoImpl;
 	
-	public void readCSV() {
-		readCSVDaoImpl.readCSV();
+	public void readCSV(String pathStr) {
+		readCSVDaoImpl.readCSV(pathStr);
 	}
 }

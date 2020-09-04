@@ -23,33 +23,14 @@ public  class ReadCSVDaoImpl implements ReadCSVDao{
 	FlightDao dao;
 	
 	@Override
-	public void readCSV() {
-		String pathStr = "C:\\Users\\premkumar\\Downloads\\Application Development";
+	public void readCSV(String pathStr) {
+		pathStr = pathStr.replace("\\", "\\\\");
+		System.out.println(pathStr);
+//		String pathStr = "C:\\Users\\premkumar\\Downloads\\Application Development";
 
-		List<String> list = null;
-		
-		Path path = Paths.get(pathStr);
 
-		try (Stream<Path> p = Files.list(path)) {
-			
-			/* This will filter only .csv file path from current directory */
-			list = p.map(m -> m.toString()).filter(m -> m.endsWith(".csv")).collect(Collectors.toList());
-			
-		} catch (Exception e) {
-			System.out.println("File Path doesn't exist! " + e);
-		}
-		
-		/*
-		 *  here list.size() > size is checked because this method is repeatedly running, this condition allow
-		 * it to append csv path list only is new csv file is arrived in the directory
-		 */
-		if (list != null && list.size() > size) {
 
-			size = list.size();
-
-			for (String strPath : list) {
-
-				try (BufferedReader br = new BufferedReader(new FileReader(strPath))) {
+				try (BufferedReader br = new BufferedReader(new FileReader(pathStr))) {
 					String line = "";
 					br.readLine();
 
@@ -86,9 +67,9 @@ public  class ReadCSVDaoImpl implements ReadCSVDao{
 				} catch (Exception e) {
 					System.out.println("Exception :" + e);
 				}
-			}
+			
 
-		}
+		
 
 	}
 
